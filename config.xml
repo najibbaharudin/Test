@@ -1,0 +1,15 @@
+ <widget id="com.example.hello" version="0.0.1">
+        <name>The New Test App</name>
+        <description>
+           Learning PhoneGap can be fun
+        </description>
+        <author email="dev@callback.apache.org" href="http://phonegap.com">
+            Apache Cordova Team
+        </author>
+        <content src="index.html" />
+        <access origin="*" />
+		<platform name="android">
+			<icon src="images/ako92.png"/>
+		</platform>
+		<splash src="images/html5_video_poster.png"/>
+    </widget>
