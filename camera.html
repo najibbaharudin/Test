@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		function pageReady()
+		{
+			navigator.camera.getPicture(displayPic,errorPic,{quality:70});
+		}
+		function displayPic(imageURL)
+		{
+			document.getElementById("pix").src = imageURL;
+		}
+		function errorPic()
+		{
+		
+		}
+	</script>
+</head>
+<body onload="pageReady()">
+	<img id="pix" />
+</body>
+</html>
