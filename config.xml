@@ -9,7 +9,7 @@
         <content src="index.html" />
         <access origin="*" />
 		<platform name="android">
-			<icon src="images/ako92.png"/>
+			<icon src="ako92.png"/>
 		</platform>
-		<splash src="images/html5_video_poster.png"/>
+		<splash src="html5_video_poster.png"/>
     </widget>

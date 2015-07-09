@@ -1,9 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script>
+		function pageLoaded()
+		{
+			document.addEventListener("deviceready", siapSedia, false);
+		}
+		
+		function siapSedia()
+		{
+			navigator.notification.alert("App is ready", mulaKerja, "This is test app notification", "Sudah! Let's G");
+		}
+		
+		function mulaKerja()
+		{
+			document.getElementById("msg").innerHTML = "Kerja boleh dimulakan.";
+		}
+	</script>
 </head>
-<body>
+<body onload="pageLoaded()">
 	<h1>This is index file</h1>
-	<p>first mobile app</p> 
+	<p>first mobile app</p>
+	<p id="msg"></p>
 </body>
 </html>
