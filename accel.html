@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		function doAccel(accel)
+		{
+				document.getElementById("display").innerHTML = "X: " + accel.X + "<br />" +
+																"Y: " + accel.Y; + "<br />" +
+																"Z: " + accel.Z;
+			});
+		}
+		function errorAccel()
+		{
+		
+		}
+		function pageReady()
+		{
+			var accel  = navigator.accelerometer.watchAcceleration(doAccel,errorAccel,{frequency:500});
+		}
+	</script>
+</head>
+<body onload="pageReady()">
+	<h1 id="display"></h1>
+</body>
+</html>
