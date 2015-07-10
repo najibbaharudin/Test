@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script>
-		function pageReady()
-		{
-			navigator.camera.getPicture(displayPic,errorPic,{quality:70});
-		}
-		function displayPic(imageURL)
-		{
-			document.getElementById("pix").src = imageURL;
-		}
-		function errorPic()
-		{
-		
-		}
-	</script>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script>
+function pageReady()
+{
+	document.addEventListener("deviceready",initPage,false);
+}
+
+function initPage()
+{
+	document.getElementById("status").innerHTML = "Page ready";
+}
+
+function startCam()
+{
+	navigator.camera.getPicture(displayPic,errorPic,{quality:70,destinationType: Camera.DestinationType.DATA_URL});
+}
+
+function displayPic(imageURL)
+{
+	document.getElementById("pix").src = "data:image/jpeg;base64," + imageURL;
+}
+
+function errorPic()
+{
+}
+</script>
 </head>
 <body onload="pageReady()">
-	<img id="pix" />
+<h1 id="status"></h1>
+<input type="button" onclick="startCam()" value="Start Cam" /><br/>
+<img id="pix" height="300" src="" />
 </body>
 </html>

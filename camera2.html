@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="cordova.js"></script>
+<script>
+function pageLoaded()
+{
+	document.addEventListener("deviceready",phoneReady,false);
+}
+
+function phoneReady()
+{
+}
+
+function initCamera()
+{
+	var options = {
+		quality:80,
+		destinationType:DATA_URL, //DATA_URL,FILE_URI,NATIVE_URI
+		allowEdit:true,
+		encodingType:JPEG,
+		PictureSourceType:CAMERA //PHOTOLIBRARY,CAMERA,SAVEDPHOTOALBUM
+	}
+	navigator.camera.getPicture(onSuccess,onFail,options);
+}
+
+function onSuccess(imageURL)
+{
+	document.getElementById("pic").src = "data:image/jpeg;base64," + imageURL;
+}
+
+function onFail(message)
+{
+	//message = reason for failure
+}
+</script>
+</head>
+<body onload="pageLoaded()">
+<input type="button" value="Start Camera" onclick="initCamera()" />
+<br/>
+<img src="" id="pic" height="400" />
+</body>
+</html>

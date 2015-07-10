@@ -1,25 +1,46 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<script>
-		function doAccel(accel)
-		{
-				document.getElementById("display").innerHTML = "X: " + accel.X + "<br />" +
-																"Y: " + accel.Y; + "<br />" +
-																"Z: " + accel.Z;
-			});
-		}
-		function errorAccel()
-		{
-		
-		}
-		function pageReady()
-		{
-			var accel  = navigator.accelerometer.watchAcceleration(doAccel,errorAccel,{frequency:500});
-		}
-	</script>
-</head>
-<body onload="pageReady()">
-	<h1 id="display"></h1>
-</body>
+  <head>
+    <title>Acceleration Example</title>
+
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+	
+	var watchID;
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError,{frequency:500});
+    }
+
+    // onSuccess: Get a snapshot of the current acceleration
+    //
+    function onSuccess(acceleration) {
+        document.getElementById("output").innerHTML = 'Acceleration X: ' + acceleration.x + '<br/>' +
+              'Acceleration Y: ' + acceleration.y + '<br/>' +
+              'Acceleration Z: ' + acceleration.z + '<br/>' +
+              'Timestamp: '      + acceleration.timestamp + '<br/>';
+    }
+
+    // onError: Failed to get the acceleration
+    //
+    function onError() {
+        alert('onError!');
+    }
+	
+	function stopTracking()
+	{
+		navigator.accelerometer.clearWatch(watchID);
+	}
+    </script>
+  </head>
+  <body>
+  	<input type="button" onclick="stopTracking()" value="Refresh" />
+    <h1>Example</h1>
+    <h1 id="output">getCurrentAcceleration</h1>
+  </body>
 </html>
